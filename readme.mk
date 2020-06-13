@@ -37,4 +37,8 @@ safety：（安全性）如果有任意的server将日志回放到状态机中�
         1、leader在一个特定的term和index下，只会创建一个log entry
         2、当发送一个appendEntries rpc时，leader会带上需要复制的log entry前一个log entry的（index，term），如果follower在自己里面没有发现跟这个log entry一样新的，再接收并保存。
 
-安全性：
+安全性：（麻烦点）
+    选举限制：
+        简明的方案，日志只能由leader流向follower。
+        所以，选举完成的条件是，选举leader的server中，之后有一个server是拥有所有已提交的log entry的，而且leader的日志，至少和follower一样新，这样就保证了leader肯定有所有已提交的log entry了。
+    提交之前任期内的日志条目：
