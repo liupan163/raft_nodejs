@@ -42,3 +42,25 @@ safety：（安全性）如果有任意的server将日志回放到状态机中�
         简明的方案，日志只能由leader流向follower。
         所以，选举完成的条件是，选举leader的server中，之后有一个server是拥有所有已提交的log entry的，而且leader的日志，至少和follower一样新，这样就保证了leader肯定有所有已提交的log entry了。
     提交之前任期内的日志条目：
+
+
+BitTorrent协议分析与实践
+从 BT 客户端角度考虑，下载原理分为以下几步：
+
+一．根据 BitTorrent 协议，文件发布者会根据要发布的文件生成提供一个 .torrent 文件。
+客户端可从 Web 服务器上下载种子文件，并从中得到 Tracker 服务器 URL 和 DHT 网络 nodes 等信息。
+
+二．根据 Tracker URL 与 Tracker 服务器建立连接，并从服务器上得到 Peers 信息。
+或者根据 nodes 与 DHT 网络中节点通信，并从节点上得到 Peers 信息。
+
+三．根据 Peers 信息与一个 Peer 建立连接，依据 Peer wire 协议完成握手，
+并从 Peer 端下载数据文件。同时监听 Peer 的连接，并给 Peer 上传数据文件。
+
+依据得到 Peers 信息的途径的不同，可分为使用 Tracker 服务器和使用 Trackerless DHT 网络两种方式。
+
+基于 HTTP 的 Tracker 协议，
+基于 UDP 的 Trackerless 协议，
+基于 TCP 的 Peer wire 协议。
+
+MagNet协议原理
+https://www.cnblogs.com/wpjamer/articles/10788222.html
