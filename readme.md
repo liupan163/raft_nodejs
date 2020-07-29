@@ -1,6 +1,7 @@
 # raft协议知识点整理
 参考:[raft中文翻译]( https://github.com/maemual/raft-zh_cn/blob/master/raft-zh_cn.md#5-raft-%E4%B8%80%E8%87%B4%E6%80%A7%E7%AE%97%E6%B3%95)
-###整理出重要的点。(好记性不如烂笔头)
+
+### 整理出重要的点。(好记性不如烂笔头)
 ###状态：
 -   跟随者状态 follower
 -   候选人状态 candidate
